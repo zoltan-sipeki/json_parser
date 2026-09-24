@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Parser {
+class Parser {
 
     private int i = 0;
 
@@ -14,7 +14,7 @@ public class Parser {
 
     private List<Integer> lineOffsets;
 
-    public Parser(Tokenizer.Result tokenizerResult) {
+    Parser(Tokenizer.Result tokenizerResult) {
         this.tokens = tokenizerResult.tokens();
         this.lineOffsets = tokenizerResult.lineOffsets();
     }

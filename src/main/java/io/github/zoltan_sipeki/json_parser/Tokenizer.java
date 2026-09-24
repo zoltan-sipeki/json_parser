@@ -3,7 +3,7 @@ package io.github.zoltan_sipeki.json_parser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tokenizer {
+class Tokenizer {
 
     public record Result(List<Token> tokens, List<Integer> lineOffsets) {
     }
@@ -16,7 +16,7 @@ public class Tokenizer {
 
     private List<Integer> lineOffsets = new ArrayList<>();
 
-    public Tokenizer(String input) {
+    Tokenizer(String input) {
         this.input = input;
     }
 
@@ -229,7 +229,7 @@ public class Tokenizer {
                         nState = NumberState.EXPONENT;
                         ++i;
                     } else {
-                        tokens.add(new Token(Token.Type.NUMBER, Double.parseDouble(input.substring(start, i)),
+                        tokens.add(new Token(Token.Type.NUMBER, Integer.parseInt(input.substring(start, i)),
                                 start, i));
                         nState = NumberState.END;
                     }
