@@ -80,7 +80,6 @@ class Parser {
         checkEndOfInput();
 
         if (tokens.get(i).getType() != Token.Type.OBJECT_END) {
-            System.out.println(tokens.get(i).getValue());
             throw syntaxError("expected comma or '}'");
         }
 

@@ -179,12 +179,12 @@ class Tokenizer {
 
                     str.append((char) unicodeValue);
 
-                    if (unicodeValue >= 0xd800 && unicodeValue <= 0xdbff) {
+                    if (Character.isHighSurrogate((char) unicodeValue)) {
                         if (prevUnicodeType != UnicodeType.BMP) {
                             throw syntaxError("invalid surrogate pair in unicode sequence in string");
                         }
                         prevUnicodeType = UnicodeType.HIGH_SURROGATE;
-                    } else if (unicodeValue >= 0xdc00 && unicodeValue <= 0xdfff) {
+                    } else if (Character.isLowSurrogate((char) unicodeValue)) {
                         if (prevUnicodeType != UnicodeType.HIGH_SURROGATE) {
                             throw syntaxError("invalid surrogate pair in unicode sequence in string");
                         }
@@ -210,7 +210,7 @@ class Tokenizer {
             throw syntaxError("unexpected end of string");
         }
     }
-
+    
     private void readNumber() {
         enum NumberState {
             START,
