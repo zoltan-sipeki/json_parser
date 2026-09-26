@@ -1,5 +1,7 @@
 package io.github.zoltan_sipeki.json_parser;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,9 +85,16 @@ class Tokenizer {
             END
         }
 
+        enum UnicodeType {
+            HIGH_SURROGATE,
+            LOW_SURROGATE,
+            BMP
+        }
+
         int start = i;
         int unicodeDigits = 0;
         int unicodeValue = 0;
+        var prevUnicodeType = UnicodeType.BMP;
         var state = StringState.START;
 
         var str = new StringBuilder();
@@ -103,7 +112,14 @@ class Tokenizer {
                 }
 
                 case CONTENT -> {
-                    if (c == '\\') {
+                    if (prevUnicodeType == UnicodeType.HIGH_SURROGATE) {
+                        if (c == '\\') {
+                            state = StringState.ESCAPE;
+                            ++i;
+                        } else {
+                            throw syntaxError("expected low surrogate in string");
+                        }
+                    } else if (c == '\\') {
                         state = StringState.ESCAPE;
                         ++i;
                     } else if (c == '"') {
@@ -119,6 +135,10 @@ class Tokenizer {
                 }
 
                 case ESCAPE -> {
+                    if (prevUnicodeType == UnicodeType.HIGH_SURROGATE && c != 'u') {
+                        throw syntaxError("expected low surrogate in string");
+                    }
+
                     switch (c) {
                         case '"', '\\', '/' -> str.append(c);
                         case 'b' -> str.append('\b');
@@ -152,10 +172,30 @@ class Tokenizer {
                     unicodeValue <<= 4;
                     unicodeValue |= hex;
 
-                    if (++unicodeDigits == 4) {
-                        str.append((char) unicodeValue);
-                        state = StringState.CONTENT;
+                    if (++unicodeDigits != 4) {
+                        ++i;
+                        continue;
                     }
+
+                    str.append((char) unicodeValue);
+
+                    if (unicodeValue >= 0xd800 && unicodeValue <= 0xdbff) {
+                        if (prevUnicodeType != UnicodeType.BMP) {
+                            throw syntaxError("invalid surrogate pair in unicode sequence in string");
+                        }
+                        prevUnicodeType = UnicodeType.HIGH_SURROGATE;
+                    } else if (unicodeValue >= 0xdc00 && unicodeValue <= 0xdfff) {
+                        if (prevUnicodeType != UnicodeType.HIGH_SURROGATE) {
+                            throw syntaxError("invalid surrogate pair in unicode sequence in string");
+                        }
+                        prevUnicodeType = UnicodeType.BMP;
+                    } else if (prevUnicodeType != UnicodeType.HIGH_SURROGATE) {
+                        prevUnicodeType = UnicodeType.BMP;
+                    } else {
+                        throw syntaxError("invalid surrogate pair in unicode sequence in string");
+                    }
+
+                    state = StringState.CONTENT;
 
                     ++i;
                 }
@@ -229,8 +269,7 @@ class Tokenizer {
                         nState = NumberState.EXPONENT;
                         ++i;
                     } else {
-                        tokens.add(new Token(Token.Type.NUMBER, Integer.parseInt(input.substring(start, i)),
-                                start, i));
+                        parseInteger(start, i, input.substring(start, i));
                         nState = NumberState.END;
                     }
 
@@ -246,15 +285,7 @@ class Tokenizer {
                         nState = NumberState.EXPONENT;
                         ++i;
                     } else {
-                        var number = input.substring(start, i);
-                        try {
-                            tokens.add(new Token(Token.Type.NUMBER, Integer.parseInt(number),
-                                    start, i));
-                        } catch (NumberFormatException e) {
-                            tokens.add(new Token(Token.Type.NUMBER, Long.parseLong(number),
-                                    start, i));
-                        }
-
+                        parseInteger(start, i, input.substring(start, i));
                         nState = NumberState.END;
                     }
                 }
@@ -275,8 +306,7 @@ class Tokenizer {
                         nState = NumberState.EXPONENT;
                         ++i;
                     } else {
-                        tokens.add(new Token(Token.Type.NUMBER, Double.parseDouble(input.substring(start, i)),
-                                start, i));
+                        parseDouble(start, i, input.substring(start, i));
                         nState = NumberState.END;
                     }
                 }
@@ -306,8 +336,7 @@ class Tokenizer {
                     if (c >= '0' && c <= '9') {
                         ++i;
                     } else {
-                        tokens.add(new Token(Token.Type.NUMBER, Double.parseDouble(input.substring(start, i)),
-                                start, i));
+                        parseDouble(start, i, input.substring(start, i));
                         nState = NumberState.END;
                     }
                 }
@@ -321,6 +350,34 @@ class Tokenizer {
         if (nState != NumberState.END && nState != NumberState.EXPONENT_INTEGER && nState != NumberState.INTEGER
                 && nState != NumberState.ZERO && nState != NumberState.FRACTION) {
             throw syntaxError("unexpected end of number");
+        } else if (nState == NumberState.ZERO || nState == NumberState.INTEGER) {
+            parseInteger(start, i, input.substring(start, i));
+        } else if (nState == NumberState.EXPONENT_INTEGER || nState == NumberState.FRACTION) {
+            parseDouble(start, i, input.substring(start, i));
+        }
+    }
+
+    private void parseInteger(int start, int end, String number) {
+        try {
+            tokens.add(new Token(Token.Type.NUMBER, Integer.parseInt(number),
+                    start, i));
+        } catch (NumberFormatException e) {
+            try {
+                tokens.add(new Token(Token.Type.NUMBER, Long.parseLong(number),
+                        start, i));
+            } catch (NumberFormatException e1) {
+                tokens.add(new Token(Token.Type.NUMBER, new BigInteger(number),
+                        start, i));
+            }
+        }
+    }
+
+    private void parseDouble(int start, int end, String number) {
+        double d = Double.parseDouble(number);
+        if (!Double.isFinite(d)) {
+            tokens.add(new Token(Token.Type.NUMBER, new BigDecimal(number), start, i));
+        } else {
+            tokens.add(new Token(Token.Type.NUMBER, d, start, i));
         }
     }
 

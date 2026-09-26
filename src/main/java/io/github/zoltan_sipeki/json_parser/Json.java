@@ -1,5 +1,7 @@
 package io.github.zoltan_sipeki.json_parser;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,6 +38,23 @@ public class Json {
 
     public List<Json> asList() {
         return convert(List.class).stream().map(Json::new).toList();
+    }
+
+    public BigInteger asBigInteger() {
+        if (object instanceof BigInteger) {
+            return (BigInteger) object;
+        }
+
+        long longValue = asLong();
+        return BigInteger.valueOf(longValue);
+    }
+
+    public BigDecimal asBigDecimal() {
+        if (object instanceof BigDecimal) {
+            return (BigDecimal) object;
+        }
+
+        return BigDecimal.valueOf(asDouble());
     }
 
     public int asInt() {
@@ -87,6 +106,27 @@ public class Json {
 
     public LocalDateTime asLocalDateTime() {
         return convertTime(LocalDateTime.class);
+    }
+
+    public BigInteger getBigInteger(String key) {
+        var map = (Map<String, Object>) convert(Map.class);
+        var val = map.get(key);
+        if (val instanceof BigInteger) {
+            return (BigInteger) val;
+        }
+
+        long longValue = getLong(key);
+        return BigInteger.valueOf(longValue);
+    }
+
+    public BigDecimal getBigDecimal(String key) {
+        var map = (Map<String, Object>) convert(Map.class);
+        var val = map.get(key);
+        if (val instanceof BigDecimal) {
+            return (BigDecimal) val;
+        }
+
+        return BigDecimal.valueOf(getDouble(key));
     }
 
     public String getString(String key) {
@@ -224,6 +264,8 @@ public class Json {
             sb.append("]");
         } else if (o == null) {
             sb.append("null");
+        } else if (o instanceof BigDecimal || o instanceof BigInteger) {
+            sb.append(o.toString());
         } else if (!(o instanceof Number n) || Double.isFinite(n.doubleValue())) {
             sb.append(o);
         } else {

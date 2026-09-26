@@ -1,0 +1,1101 @@
+null
+---
+true
+---
+false
+---
+0
+---
+-0
+---
+42
+---
+-42
+---
+3.14159
+---
+-3.14159
+---
+0.5
+---
+0.100000000000000005551115123126
+---
+1e10
+---
+1E10
+---
+1e+10
+---
+1e-10
+---
+6.022E+23
+---
+1.5e-10
+---
+2.998e8
+---
+123456789012345678901234567890
+---
+-123456789012345678901234567890
+---
+9007199254740991
+---
+9007199254740993
+---
+1e-400
+---
+1e400
+---
+123456789.987654321e+5
+---
+0e0
+---
+-0.0
+---
+-0e0
+---
+""
+---
+"hello world"
+---
+"she said \"hi\""
+---
+"C:\\Users\\test"
+---
+"a\/b"
+---
+"a\bb"
+---
+"a\fb"
+---
+"line1\nline2"
+---
+"line1\rline2"
+---
+"col1\tcol2"
+---
+"\"\\\/\b\f\n\r\t"
+---
+"\u00e9\u00e8\u00ea"
+---
+"\u0000"
+---
+"\ud83d\ude00"
+---
+"héllo wörld 日本語 🎉"
+---
+"😀🚀✨"
+---
+"12345"
+---
+"true"
+---
+"null"
+---
+"   "
+---
+"Tab:\tNewline:\nUnicode:\u00fcber"
+---
+{}
+---
+[]
+---
+[[], [], []]
+---
+[{}]
+---
+[{}, {}, {}]
+---
+[1, 2, 3, 4, 5]
+---
+[1, "two", 3.0, true, false, null]
+---
+["a", "b", "c"]
+---
+[[1, 2], [3, 4], [5, 6]]
+---
+{"key": "value"}
+---
+{"a": 1, "b": 2, "c": 3}
+---
+{
+  "string": "value",
+  "number": 42,
+  "float": 3.14,
+  "bool_true": true,
+  "bool_false": false,
+  "null_value": null,
+  "array": [1, 2, 3],
+  "object": {"nested": "value"}
+}
+---
+   42   
+---
+	
+  {
+	"a"
+:
+1
+}
+	
+---
+{"a":1,"b":2,"c":[1,2,3]}
+---
+{   "a"   :   1   ,   "b"   :   2   }
+---
+{
+  "a": 1,
+  "b": 2
+}
+---
+{"": "empty key"}
+---
+{"key with spaces": 1}
+---
+{"日本語キー": "value"}
+---
+{"key\nwith\tescapes": 1}
+---
+{"1": "one", "2": "two", "10": "ten"}
+---
+{"a.b.c": 1, "a[0]": 2, "a-b_c": 3}
+---
+{
+  "field_00": 0,
+  "field_01": "string value 1",
+  "field_02": 3.0,
+  "field_03": false,
+  "field_04": null,
+  "field_05": [
+    5,
+    6,
+    7
+  ],
+  "field_06": 6,
+  "field_07": "string value 7",
+  "field_08": 12.0,
+  "field_09": false,
+  "field_10": null,
+  "field_11": [
+    11,
+    12,
+    13
+  ],
+  "field_12": 12,
+  "field_13": "string value 13",
+  "field_14": 21.0,
+  "field_15": false,
+  "field_16": null,
+  "field_17": [
+    17,
+    18,
+    19
+  ],
+  "field_18": 18,
+  "field_19": "string value 19",
+  "field_20": 30.0,
+  "field_21": false,
+  "field_22": null,
+  "field_23": [
+    23,
+    24,
+    25
+  ],
+  "field_24": 24,
+  "field_25": "string value 25",
+  "field_26": 39.0,
+  "field_27": false,
+  "field_28": null,
+  "field_29": [
+    29,
+    30,
+    31
+  ]
+}
+---
+{
+  "level": 10,
+  "data": "level_10_data",
+  "child": {
+    "level": 9,
+    "data": "level_9_data",
+    "child": {
+      "level": 8,
+      "data": "level_8_data",
+      "child": {
+        "level": 7,
+        "data": "level_7_data",
+        "child": {
+          "level": 6,
+          "data": "level_6_data",
+          "child": {
+            "level": 5,
+            "data": "level_5_data",
+            "child": {
+              "level": 4,
+              "data": "level_4_data",
+              "child": {
+                "level": 3,
+                "data": "level_3_data",
+                "child": {
+                  "level": 2,
+                  "data": "level_2_data",
+                  "child": {
+                    "level": 1,
+                    "data": "level_1_data",
+                    "child": {
+                      "leaf": true,
+                      "depth": 0,
+                      "value": "bottom"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+---
+[
+  10,
+  [
+    9,
+    [
+      8,
+      [
+        7,
+        [
+          6,
+          [
+            5,
+            [
+              4,
+              [
+                3,
+                [
+                  2,
+                  [
+                    1,
+                    [
+                      "leaf",
+                      0,
+                      true
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+]
+---
+{
+  "prop_10_0": 10,
+  "prop_10_1": "level 10 property 1",
+  "prop_10_2": 1.0,
+  "prop_10_3": true,
+  "prop_10_4": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "prop_10_5": {
+    "prop_9_0": 9,
+    "prop_9_1": "level 9 property 1",
+    "prop_9_2": 0.9,
+    "prop_9_3": false,
+    "prop_9_4": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "prop_9_5": {
+      "prop_8_0": 8,
+      "prop_8_1": "level 8 property 1",
+      "prop_8_2": 0.8,
+      "prop_8_3": true,
+      "prop_8_4": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "prop_8_5": {
+        "prop_7_0": 7,
+        "prop_7_1": "level 7 property 1",
+        "prop_7_2": 0.7000000000000001,
+        "prop_7_3": false,
+        "prop_7_4": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "prop_7_5": {
+          "prop_6_0": 6,
+          "prop_6_1": "level 6 property 1",
+          "prop_6_2": 0.6000000000000001,
+          "prop_6_3": true,
+          "prop_6_4": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "prop_6_5": {
+            "prop_5_0": 5,
+            "prop_5_1": "level 5 property 1",
+            "prop_5_2": 0.5,
+            "prop_5_3": false,
+            "prop_5_4": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "prop_5_5": {
+              "prop_4_0": 4,
+              "prop_4_1": "level 4 property 1",
+              "prop_4_2": 0.4,
+              "prop_4_3": true,
+              "prop_4_4": [
+                0,
+                1,
+                2,
+                3
+              ],
+              "prop_4_5": {
+                "prop_3_0": 3,
+                "prop_3_1": "level 3 property 1",
+                "prop_3_2": 0.30000000000000004,
+                "prop_3_3": false,
+                "prop_3_4": [
+                  0,
+                  1,
+                  2
+                ],
+                "prop_3_5": {
+                  "prop_2_0": 2,
+                  "prop_2_1": "level 2 property 1",
+                  "prop_2_2": 0.2,
+                  "prop_2_3": true,
+                  "prop_2_4": [
+                    0,
+                    1
+                  ],
+                  "prop_2_5": {
+                    "prop_1_0": 1,
+                    "prop_1_1": "level 1 property 1",
+                    "prop_1_2": 0.1,
+                    "prop_1_3": false,
+                    "prop_1_4": [
+                      0
+                    ],
+                    "prop_1_5": {
+                      "id": 0,
+                      "name": "leaf node",
+                      "active": false,
+                      "score": null,
+                      "tags": [
+                        "leaf",
+                        "bottom",
+                        "final"
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+---
+[
+  {
+    "index": 0,
+    "name": "item_0",
+    "value": 0.0,
+    "active": true,
+    "tags": [
+      "tag0",
+      "cat0"
+    ]
+  },
+  {
+    "index": 1,
+    "name": "item_1",
+    "value": 3.14,
+    "active": false,
+    "tags": [
+      "tag1",
+      "cat1"
+    ]
+  },
+  {
+    "index": 2,
+    "name": "item_2",
+    "value": 6.28,
+    "active": false,
+    "tags": [
+      "tag2",
+      "cat2"
+    ]
+  },
+  {
+    "index": 3,
+    "name": "item_3",
+    "value": 9.42,
+    "active": true,
+    "tags": [
+      "tag3",
+      "cat3"
+    ]
+  },
+  {
+    "index": 4,
+    "name": "item_4",
+    "value": 12.56,
+    "active": false,
+    "tags": [
+      "tag4",
+      "cat4"
+    ]
+  },
+  {
+    "index": 5,
+    "name": "item_5",
+    "value": 15.700000000000001,
+    "active": false,
+    "tags": [
+      "tag5",
+      "cat0"
+    ]
+  },
+  {
+    "index": 6,
+    "name": "item_6",
+    "value": 18.84,
+    "active": true,
+    "tags": [
+      "tag6",
+      "cat1"
+    ]
+  },
+  {
+    "index": 7,
+    "name": "item_7",
+    "value": 21.98,
+    "active": false,
+    "tags": [
+      "tag7",
+      "cat2"
+    ]
+  },
+  {
+    "index": 8,
+    "name": "item_8",
+    "value": 25.12,
+    "active": false,
+    "tags": [
+      "tag8",
+      "cat3"
+    ]
+  },
+  {
+    "index": 9,
+    "name": "item_9",
+    "value": 28.26,
+    "active": true,
+    "tags": [
+      "tag9",
+      "cat4"
+    ]
+  },
+  {
+    "index": 10,
+    "name": "item_10",
+    "value": 31.400000000000002,
+    "active": false,
+    "tags": [
+      "tag10",
+      "cat0"
+    ]
+  },
+  {
+    "index": 11,
+    "name": "item_11",
+    "value": 34.54,
+    "active": false,
+    "tags": [
+      "tag11",
+      "cat1"
+    ]
+  },
+  {
+    "index": 12,
+    "name": "item_12",
+    "value": 37.68,
+    "active": true,
+    "tags": [
+      "tag12",
+      "cat2"
+    ]
+  },
+  {
+    "index": 13,
+    "name": "item_13",
+    "value": 40.82,
+    "active": false,
+    "tags": [
+      "tag13",
+      "cat3"
+    ]
+  },
+  {
+    "index": 14,
+    "name": "item_14",
+    "value": 43.96,
+    "active": false,
+    "tags": [
+      "tag14",
+      "cat4"
+    ]
+  },
+  {
+    "index": 15,
+    "name": "item_15",
+    "value": 47.1,
+    "active": true,
+    "tags": [
+      "tag15",
+      "cat0"
+    ]
+  },
+  {
+    "index": 16,
+    "name": "item_16",
+    "value": 50.24,
+    "active": false,
+    "tags": [
+      "tag16",
+      "cat1"
+    ]
+  },
+  {
+    "index": 17,
+    "name": "item_17",
+    "value": 53.38,
+    "active": false,
+    "tags": [
+      "tag17",
+      "cat2"
+    ]
+  },
+  {
+    "index": 18,
+    "name": "item_18",
+    "value": 56.52,
+    "active": true,
+    "tags": [
+      "tag18",
+      "cat3"
+    ]
+  },
+  {
+    "index": 19,
+    "name": "item_19",
+    "value": 59.660000000000004,
+    "active": false,
+    "tags": [
+      "tag19",
+      "cat4"
+    ]
+  },
+  {
+    "index": 20,
+    "name": "item_20",
+    "value": 62.800000000000004,
+    "active": false,
+    "tags": [
+      "tag20",
+      "cat0"
+    ]
+  },
+  {
+    "index": 21,
+    "name": "item_21",
+    "value": 65.94,
+    "active": true,
+    "tags": [
+      "tag21",
+      "cat1"
+    ]
+  },
+  {
+    "index": 22,
+    "name": "item_22",
+    "value": 69.08,
+    "active": false,
+    "tags": [
+      "tag22",
+      "cat2"
+    ]
+  },
+  {
+    "index": 23,
+    "name": "item_23",
+    "value": 72.22,
+    "active": false,
+    "tags": [
+      "tag23",
+      "cat3"
+    ]
+  },
+  {
+    "index": 24,
+    "name": "item_24",
+    "value": 75.36,
+    "active": true,
+    "tags": [
+      "tag24",
+      "cat4"
+    ]
+  },
+  {
+    "index": 25,
+    "name": "item_25",
+    "value": 78.5,
+    "active": false,
+    "tags": [
+      "tag25",
+      "cat0"
+    ]
+  },
+  {
+    "index": 26,
+    "name": "item_26",
+    "value": 81.64,
+    "active": false,
+    "tags": [
+      "tag26",
+      "cat1"
+    ]
+  },
+  {
+    "index": 27,
+    "name": "item_27",
+    "value": 84.78,
+    "active": true,
+    "tags": [
+      "tag27",
+      "cat2"
+    ]
+  },
+  {
+    "index": 28,
+    "name": "item_28",
+    "value": 87.92,
+    "active": false,
+    "tags": [
+      "tag28",
+      "cat3"
+    ]
+  },
+  {
+    "index": 29,
+    "name": "item_29",
+    "value": 91.06,
+    "active": false,
+    "tags": [
+      "tag29",
+      "cat4"
+    ]
+  },
+  {
+    "index": 30,
+    "name": "item_30",
+    "value": 94.2,
+    "active": true,
+    "tags": [
+      "tag30",
+      "cat0"
+    ]
+  },
+  {
+    "index": 31,
+    "name": "item_31",
+    "value": 97.34,
+    "active": false,
+    "tags": [
+      "tag31",
+      "cat1"
+    ]
+  },
+  {
+    "index": 32,
+    "name": "item_32",
+    "value": 100.48,
+    "active": false,
+    "tags": [
+      "tag32",
+      "cat2"
+    ]
+  },
+  {
+    "index": 33,
+    "name": "item_33",
+    "value": 103.62,
+    "active": true,
+    "tags": [
+      "tag33",
+      "cat3"
+    ]
+  },
+  {
+    "index": 34,
+    "name": "item_34",
+    "value": 106.76,
+    "active": false,
+    "tags": [
+      "tag34",
+      "cat4"
+    ]
+  },
+  {
+    "index": 35,
+    "name": "item_35",
+    "value": 109.9,
+    "active": false,
+    "tags": [
+      "tag35",
+      "cat0"
+    ]
+  },
+  {
+    "index": 36,
+    "name": "item_36",
+    "value": 113.04,
+    "active": true,
+    "tags": [
+      "tag36",
+      "cat1"
+    ]
+  },
+  {
+    "index": 37,
+    "name": "item_37",
+    "value": 116.18,
+    "active": false,
+    "tags": [
+      "tag37",
+      "cat2"
+    ]
+  },
+  {
+    "index": 38,
+    "name": "item_38",
+    "value": 119.32000000000001,
+    "active": false,
+    "tags": [
+      "tag38",
+      "cat3"
+    ]
+  },
+  {
+    "index": 39,
+    "name": "item_39",
+    "value": 122.46000000000001,
+    "active": true,
+    "tags": [
+      "tag39",
+      "cat4"
+    ]
+  },
+  {
+    "index": 40,
+    "name": "item_40",
+    "value": 125.60000000000001,
+    "active": false,
+    "tags": [
+      "tag40",
+      "cat0"
+    ]
+  },
+  {
+    "index": 41,
+    "name": "item_41",
+    "value": 128.74,
+    "active": false,
+    "tags": [
+      "tag41",
+      "cat1"
+    ]
+  },
+  {
+    "index": 42,
+    "name": "item_42",
+    "value": 131.88,
+    "active": true,
+    "tags": [
+      "tag42",
+      "cat2"
+    ]
+  },
+  {
+    "index": 43,
+    "name": "item_43",
+    "value": 135.02,
+    "active": false,
+    "tags": [
+      "tag43",
+      "cat3"
+    ]
+  },
+  {
+    "index": 44,
+    "name": "item_44",
+    "value": 138.16,
+    "active": false,
+    "tags": [
+      "tag44",
+      "cat4"
+    ]
+  },
+  {
+    "index": 45,
+    "name": "item_45",
+    "value": 141.3,
+    "active": true,
+    "tags": [
+      "tag45",
+      "cat0"
+    ]
+  },
+  {
+    "index": 46,
+    "name": "item_46",
+    "value": 144.44,
+    "active": false,
+    "tags": [
+      "tag46",
+      "cat1"
+    ]
+  },
+  {
+    "index": 47,
+    "name": "item_47",
+    "value": 147.58,
+    "active": false,
+    "tags": [
+      "tag47",
+      "cat2"
+    ]
+  },
+  {
+    "index": 48,
+    "name": "item_48",
+    "value": 150.72,
+    "active": true,
+    "tags": [
+      "tag48",
+      "cat3"
+    ]
+  },
+  {
+    "index": 49,
+    "name": "item_49",
+    "value": 153.86,
+    "active": false,
+    "tags": [
+      "tag49",
+      "cat4"
+    ]
+  }
+]
+---
+{
+  "apiVersion": "v2.1",
+  "requestId": "550e8400-e29b-41d4-a716-446655440000",
+  "timestamp": "2026-09-25T12:34:56.789Z",
+  "success": true,
+  "errors": null,
+  "meta": {
+    "page": 1,
+    "perPage": 25,
+    "totalPages": 8,
+    "totalItems": 187,
+    "links": {
+      "self": "/api/v2/items?page=1",
+      "next": "/api/v2/items?page=2",
+      "prev": null
+    }
+  },
+  "data": {
+    "users": [
+      {
+        "id": 1001,
+        "username": "alice_wonder",
+        "email": "alice@example.com",
+        "profile": {
+          "firstName": "Alice",
+          "lastName": "Wonder",
+          "age": 29,
+          "verified": true,
+          "address": {
+            "street": "123 Main St",
+            "city": "Springfield",
+            "coordinates": {
+              "lat": 39.781721,
+              "lng": -89.650148
+            }
+          },
+          "preferences": {
+            "theme": "dark",
+            "notifications": {
+              "email": true,
+              "sms": false,
+              "push": true
+            }
+          }
+        },
+        "roles": [
+          "admin",
+          "editor"
+        ],
+        "lastLogin": "2026-09-24T08:15:00Z",
+        "loginCount": 342,
+        "balance": 1234.56,
+        "negativeBalance": -50.25
+      },
+      {
+        "id": 1002,
+        "username": "bob_builder",
+        "email": "bob@example.com",
+        "profile": {
+          "firstName": "Bob",
+          "lastName": "Builder",
+          "age": 45,
+          "verified": false,
+          "address": null,
+          "preferences": {}
+        },
+        "roles": [],
+        "lastLogin": null,
+        "loginCount": 0,
+        "balance": 0,
+        "negativeBalance": 0.0
+      }
+    ],
+    "products": [
+      {
+        "sku": "ABC-123",
+        "price": 19.99,
+        "inStock": true,
+        "quantity": 500
+      },
+      {
+        "sku": "XYZ-999",
+        "price": 999999.99,
+        "inStock": false,
+        "quantity": 0
+      }
+    ]
+  },
+  "extra": {
+    "unicodeSample": "Ünïcödé tëst: 日本語, Ελληνικά, Русский, 🎉🚀",
+    "escapedSample": "Line1\nLine2\tTabbed\"Quoted\"",
+    "scientificNumbers": [
+      12300000000.0,
+      -4.56e-10,
+      0.0,
+      -0.0
+    ],
+    "booleans": [
+      true,
+      false,
+      true,
+      true,
+      false
+    ]
+  }
+}
+---
+[""]
+---
+{"a": [], "b": {}, "c": [{}], "d": [[]]}
+---
+[1]
+---
+{"only": "one"}
+---
+[true, false, true, true, false]
+---
+[null, null, null]
+---
+{"count": 0}
+---
+[[[[[[[[[[1]]]]]]]]]]
+---
+"{\"fake\": \"json\"}"
+---
+"!#$%&()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[]^_`abcdefghijklmnopqrstuvwxyz{|}~"
+---
+{"matrix": [[1,2,3],[4,5,6],[7,8,9]]}
+---
+1
+---
+-1
+---
+100
+---
+0.001
+---
+1.500000
+---
+"\ud800\udc00"
+---
+"\udbff\udfff"
+---
+"\ud834\udd1e"
+---
+"\ud83d\ude00\ud83d\ude01\ud83d\ude02"
+---
+"before \ud83c\udf89 after"
+---
+"escaped: \ud83d\udc4d literal: 👍"
+---
+{"emoji": "\ud83d\ude80", "label": "rocket \u2728"}
+---
+["\ud83d\ude00", "\ud83d\ude01", "\ud83c\udf89", "\ud83d\ude80"]

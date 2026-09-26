@@ -20,6 +20,18 @@ class Parser {
     }
 
     public Object parse() {
+        var result = _parse();
+
+        if (i < tokens.size()) {
+            throw syntaxError("expected end of file");
+        }
+
+        return result;
+    }
+
+    private Object _parse() {
+        checkEndOfInput();
+
         var token = tokens.get(i);
         switch (token.getType()) {
             case OBJECT_START -> {
@@ -56,6 +68,8 @@ class Parser {
     private Map<String, Object> parseObject() {
         var object = new HashMap<String, Object>();
 
+        checkEndOfInput();
+
         if (tokens.get(i).getType() == Token.Type.OBJECT_END) {
             ++i;
             return object;
@@ -63,7 +77,10 @@ class Parser {
 
         parseEntries(object);
 
+        checkEndOfInput();
+
         if (tokens.get(i).getType() != Token.Type.OBJECT_END) {
+            System.out.println(tokens.get(i).getValue());
             throw syntaxError("expected comma or '}'");
         }
 
@@ -75,6 +92,8 @@ class Parser {
     private void parseEntries(Map<String, Object> object) {
         parseEntry(object);
 
+        checkEndOfInput();
+
         if (tokens.get(i).getType() == Token.Type.COMMA) {
             ++i;
             parseEntries(object);
@@ -82,6 +101,8 @@ class Parser {
     }
 
     private void parseEntry(Map<String, Object> object) {
+        checkEndOfInput();
+
         var token = tokens.get(i);
         if (token.getType() != Token.Type.STRING) {
             throw syntaxError("expected property name");
@@ -89,22 +110,28 @@ class Parser {
 
         ++i;
 
+        checkEndOfInput();
+
         if (tokens.get(i).getType() != Token.Type.COLON) {
             throw syntaxError("expected ':'");
         }
         ++i;
 
-        var value = parse();
+        var value = _parse();
         object.put((String) token.getValue(), value);
     }
 
     private List<Object> parseArray() {
+        checkEndOfInput();
         var list = new ArrayList<Object>();
         if (tokens.get(i).getType() == Token.Type.ARRAY_END) {
+            ++i;
             return list;
         }
 
         parseItems(list);
+
+        checkEndOfInput();
 
         if (tokens.get(i).getType() != Token.Type.ARRAY_END) {
             throw syntaxError("expected comma or ']'");
@@ -116,8 +143,10 @@ class Parser {
     }
 
     private void parseItems(List<Object> list) {
-        var item = parse();
+        var item = _parse();
         list.add(item);
+
+        checkEndOfInput();
 
         if (tokens.get(i).getType() == Token.Type.COMMA) {
             ++i;
@@ -127,15 +156,25 @@ class Parser {
 
     private int getLine(int offset) {
         int index = Collections.binarySearch(lineOffsets, offset);
-        return index > 0 ? index + 1 : -index - 1;
+        return index >= 0 ? index + 1 : -index - 1;
     }
 
     private int getColumn(int line, int offset) {
         return offset - lineOffsets.get(line - 1);
     }
 
+    private void checkEndOfInput() {
+        if (i >= tokens.size()) {
+            throw syntaxError("unexpected end of input");
+        }
+    }
+
     private JsonSyntaxError syntaxError(String message) {
-        var token = tokens.get(i - 1);
+        if (tokens.isEmpty()) {
+            return new JsonSyntaxError("Syntax Error: " + message);
+        }
+
+        var token = tokens.get(i > 0 ? i - 1 : i);
         int line = getLine(token.getEndOffset());
         int column = getColumn(line, token.getEndOffset());
 
